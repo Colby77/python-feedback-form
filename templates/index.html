@@ -10,7 +10,9 @@
 <body>
     <div class="container">
         <img src='../static/Toyota-Logo-PNG-Clipart.png' alt='logo' class='logo'>
-        <!-- put message here -->
+        {% if message %}
+        <p class='message'>{{ message | safe}}</p>
+        {% endif %}
         <form action="/submit" method="POST">
             <div class='form-group'>
                 <h3>Customer Name</h3>
