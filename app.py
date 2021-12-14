@@ -1,14 +1,20 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
+load_dotenv()
+url = os.getenv('CONNECTION_STRING')
+
 ENV = 'dev'
+
 
 if ENV == 'dev':
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+    app.config['SQLALCHEMY_DATABASE_URI'] = url
 else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = ''
