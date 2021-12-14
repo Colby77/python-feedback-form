@@ -1,8 +1,8 @@
+import os
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from send_mail import send_mail
 from dotenv import load_dotenv
-import os
+from send_mail import send_mail
 
 app = Flask(__name__)
 
@@ -10,7 +10,6 @@ load_dotenv()
 url = os.getenv('CONNECTION_STRING')
 
 ENV = 'prod'
-
 
 if ENV == 'dev':
     app.debug = True
@@ -22,6 +21,7 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
 
 class Feedback(db.Model):
     __tablename__ = 'feedback'
