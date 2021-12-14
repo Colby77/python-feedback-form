@@ -9,7 +9,7 @@ app = Flask(__name__)
 load_dotenv()
 url = os.getenv('CONNECTION_STRING')
 
-ENV = 'dev'
+ENV = 'prod'
 
 
 if ENV == 'dev':
@@ -17,7 +17,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = url
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+    app.config['SQLALCHEMY_DATABASE_URI'] = url
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
